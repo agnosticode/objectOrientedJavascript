@@ -1,31 +1,80 @@
-//Person Constructor
-function Person(name,dob){
-    this.name=name;
-    // this.age=age;
-    this.birthday=new Date(dob);
-    this.calculateAge=function(){
-        const diff=Date.now()-this.birthday.getTime();
-        return new Date(diff).getUTCFullYear()-1970;//Time are calculated from 1jan1970
-    };
+//BUILT IN CONSTRUCTOR 
+
+//Strings
+const name1='jeff';//create as a primitive type
+const name2= new String('jeff');//create as an object by calling constructor function
+
+//name2.foo='bar';//can add property to it
+
+console.log(typeof name1);//String
+console.log(typeof name2);//object
+
+//Conditional on primitive type
+// if(name1==='jeff'){
+//     console.log('Yes');         // Yes
+// }else{
+//     console.log('No');
+// };
+
+//Conditional on string object
+if(name2==='jeff'){
+    console.log('Yes');         // No --- bcz type is not same
+}else{
+    console.log('No');
 };
 
-const brad=new Person('Brad','9-10-1981');
 
-console.log(brad);
-console.log(brad.calculateAge());
+//Number
+const num1=5;//As primitive type
+const num2=new Number(5);//as object by calling constructor function
+
+//Boolean
+const bool1=true;
+const bool2= new Boolean(false);
+
+//Functions
+const getSum1=function(x,y){
+    return x+y;
+};
+const getSum2=new Function('x','y','return x+y');//constructor
+
+//Object
+const john1={
+    name:'John1'
+};
+const john2=new Object({name:'John2'});
+
+//Arrays
+const arr1=[1,2,3,4,5];
+const arr2=new Array(1,2,3,4,5,6);
+
+//Regular Expressions
+const re1=/\w+/;
+const re2=new RegExp('\\w+');
 
 
-// const brad=new Person('Brad','9-10-1981');//mmddyyy
 
-// console.log(brad);
 
-// var time=new Date('7-25-1994');
-// console.log(time);
-// var calculate=time.getTime();
-// console.log(calculate);
-// console.log(new Date(calculate));
-// var now=Date.now();
-// console.log(now);
-// var diff=now-calculate;
-// var date=new Date(diff);
-// console.log(date.getUTCFullYear()-1970);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
