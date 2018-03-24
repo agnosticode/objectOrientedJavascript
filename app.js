@@ -1,80 +1,41 @@
-//BUILT IN CONSTRUCTOR 
+//Object.prototype
+//Person.prototype
 
-//Strings
-const name1='jeff';//create as a primitive type
-const name2= new String('jeff');//create as an object by calling constructor function
 
-//name2.foo='bar';//can add property to it
+function Person(firstName, lastName, dob) {
+    this.firstName = firstName;
+    this.lastName=lastName;
+    this.birthday = new Date(dob);
+    // this.calculateAge = function () {
+    //     const diff = Date.now() - this.birthday.getTime();
+    //     return Math.abs(new Date(diff).getUTCFullYear() - 1970);//Time are calculated from 1jan1970
+    // };
+};
 
-console.log(typeof name1);//String
-console.log(typeof name2);//object
+//Calculate age
+Person.prototype.calculateAge = function () {
+    const diff = Date.now() - this.birthday.getTime();
+    return Math.abs(new Date(diff).getUTCFullYear() - 1970);//Time are calculated from 1jan1970
+};
 
-//Conditional on primitive type
-// if(name1==='jeff'){
-//     console.log('Yes');         // Yes
-// }else{
-//     console.log('No');
-// };
+//get full name
+Person.prototype.getFullName = function(){
+    return `${this.firstName} ${this.lastName}`;
+};
 
-//Conditional on string object
-if(name2==='jeff'){
-    console.log('Yes');         // No --- bcz type is not same
-}else{
-    console.log('No');
+//Gets married-last name change
+Person.prototype.getsMarried = function(newLastName){
+    this.lastName = newLastName;
 };
 
 
-//Number
-const num1=5;//As primitive type
-const num2=new Number(5);//as object by calling constructor function
 
-//Boolean
-const bool1=true;
-const bool2= new Boolean(false);
+const john = new Person('John','Doe','8-12-1990');
+const mary = new Person('Marry','Johnson','March 20 1978');
 
-//Functions
-const getSum1=function(x,y){
-    return x+y;
-};
-const getSum2=new Function('x','y','return x+y');//constructor
-
-//Object
-const john1={
-    name:'John1'
-};
-const john2=new Object({name:'John2'});
-
-//Arrays
-const arr1=[1,2,3,4,5];
-const arr2=new Array(1,2,3,4,5,6);
-
-//Regular Expressions
-const re1=/\w+/;
-const re2=new RegExp('\\w+');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(mary);
+console.log(john.calculateAge());
+console.log(mary.getFullName());
+mary.getsMarried('Smith');
+console.log(mary.getFullName());
+console.log(mary.hasOwnProperty('firstName'));
